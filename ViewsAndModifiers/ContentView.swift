@@ -7,6 +7,23 @@
 
 import SwiftUI
 
+struct BlueTitle: ViewModifier {
+    func body(content: Content) -> some View {
+        
+        content
+            .font(.largeTitle)
+            .foregroundStyle(.blue)
+    }
+}
+
+
+extension View {
+    func blueTitle(with text: String) -> some View {
+        modifier(BlueTitle())
+    }
+}
+
+
 struct Title: ViewModifier {
     func body(content: Content) -> some View {
         content
@@ -57,6 +74,14 @@ struct ContentView: View {
         Color.blue
             .frame(width: 300, height: 200)
             .watermarked(with: "Hacking with Swift")
+        
+        Text("Hello World")
+            .modifier(Title())
+        Text("Blub")
+            .modifier(Title())
+        
+        Text("BlueTitle")
+            .modifier(BlueTitle())
     }
 }
 
